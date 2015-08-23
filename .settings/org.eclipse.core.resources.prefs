@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/query.jsp=UTF-8
+encoding//src/cn/org/springmvc/bean/OneDayWeatherInf.java=UTF-8
+encoding//src/cn/org/springmvc/controller/QueryCityController.java=UTF-8
+encoding//src/cn/org/springmvc/controller/QueryWeatherController.java=UTF-8

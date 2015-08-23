@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+        <!-- 
+            1.BeanNameUrlHandlerMapping：Bean name as request url，need set controller into spring container，the name of bean is the url of request，must be end of .action。
+         -->
+        <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+        <bean name="/queryCity.action" class="cn.org.springmvc.controller.QueryCityController"></bean>   
+        <bean name="/queryWeather.action" class="cn.org.springmvc.controller.QueryWeatherController"></bean>
+        <!-- 
+            2.SimpleControllerHandlerAdapter：Simple adapter of controller，all the bean already implemented the interface of org.springframework.web.servlet.mvc.Controller as the controller of the back-end
+         -->
+        <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+        <!-- Define bean in the xml file and set the scope with prototype -->
+        <!-- Define city bean -->
+        <bean id = "city" class="cn.org.springmvc.bean.City" scope="prototype"></bean>
+        <bean id = "weatherUtil" class="cn.org.springmvc.util.WeatherUtil" scope="prototype"></bean>
+        <!-- Defind oneDay weather information bean -->
+        <bean id = "oneDayWeatherInf" class="cn.org.springmvc.bean.OneDayWeatherInf" scope="prototype"></bean>
+        <!-- Define properties bean -->
+        <bean id="configproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+          <property name="location" value="classpath:configInfo.properties"/>
+         </bean>    
+        <!-- 
+            3.InternalResourceViewResolver：support parse view wit Jsp
+            View need to be set in controller used ModelAndView
+         -->
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean> 
+</beans>
