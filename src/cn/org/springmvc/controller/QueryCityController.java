@@ -40,7 +40,7 @@ import cn.org.springmvc.util.WeatherUtil;
 	    	   //Get pageFlag used for dispatching to error page
 	    	   pageFlag = prop.substring(prop.indexOf("%")+1,prop.length());
 	    	   //Get list with city bean
-	    	   cityList = weatherUtil.setCityFromPropertiesFile(act,prop.substring(0, prop.indexOf("&")),prop.substring(prop.indexOf("&")+1,prop.indexOf("%")-2));
+	    	   cityList = weatherUtil.setCityFromPropertiesFile(act,prop.substring(0, prop.indexOf("&")),prop.substring(prop.indexOf("&")+1,prop.indexOf("%")));
 	    	}catch(NoSuchBeanDefinitionException e){
 	    		logger.info("NoSuchBeanDefinitionException:"+e.getMessage());
              	pageFlag = "1";

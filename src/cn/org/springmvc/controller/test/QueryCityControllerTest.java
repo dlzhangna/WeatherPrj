@@ -17,7 +17,7 @@ public class QueryCityControllerTest {
 	    	ApplicationContext actTest = ggw.getApplicationContext();
 	    	WeatherUtil weatherUtil=(WeatherUtil)actTest.getBean("weatherUtil");
 	    	String prop = weatherUtil.getProperties(actTest);
-	    	List<City> cityListTest = weatherUtil.setCityFromPropertiesFile(actTest,prop.substring(0, prop.indexOf("&")),prop.substring(prop.indexOf("&")+1,prop.length()));
+	    	List<City> cityListTest = weatherUtil.setCityFromPropertiesFile(actTest,prop.substring(0, prop.indexOf("&")),prop.substring(prop.indexOf("&")+1,prop.indexOf("%")));
 	        for(int j=0;j<cityListTest.size();j++){
           System.out.println("cityCode:"+cityListTest.get(j).getCityCode()+"\t"+"cityName:"+cityListTest.get(j).getCityName());
         }

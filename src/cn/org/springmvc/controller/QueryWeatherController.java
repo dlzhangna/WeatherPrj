@@ -53,7 +53,7 @@ import cn.org.springmvc.constant.WeatherConstant;
 	    	  //Get cityCode,cityName from Properties file, if get error, set pageFlag="0", response with cityCode,cityName together
 	    	  String prop = weatherUtil.getProperties(act);
 	    	  //Get list with city bean
-	    	  cityList = weatherUtil.setCityFromPropertiesFile(act,prop.substring(0, prop.indexOf("&")),prop.substring(prop.indexOf("&"),prop.length()));
+	    	  cityList = weatherUtil.setCityFromPropertiesFile(act,prop.substring(0, prop.indexOf("&")),prop.substring(prop.indexOf("&")+1,prop.indexOf("%")));
 	    	  //Set cityList to attribute used for display select for front-end.
 	    	  request.setAttribute("cityList", cityList);
 	        }catch(NoSuchBeanDefinitionException e){
